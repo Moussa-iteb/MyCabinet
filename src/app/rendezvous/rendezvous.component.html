@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card card-success">
+        <div class="card-header">
+          <h3  align="center">Liste des Rendez-Vous</h3>
+        </div>
+       
+        <div class="card-body">
+            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
+                Ajouter Rendez-Vous
+                </button>
+                <div class="card bg-gradient-default">
+                  <div class="card-header border-0">
+    
+                    
+                     
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Numéro de RDV</th>
+                      <th>Date et Heure</th>
+                      
+                      <th>Nom et Prénom</th>
+                      <th>Numéro Téléphone</th>
+                      <th>Action</th>
+                     
+                     
+                      
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-widget="expandable-table" aria-expanded="false">
+                      
+                     
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td><button type="button" class="btn btn-danger">Supprimer</button><button type="button" class="btn btn-success " data-toggle="modal" data-target="#modal-default">
+                        Modifier
+                        </button></td>
+                    </tr>
+                    <tr data-widget="expandable-table" aria-expanded="false">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><button type="button" class="btn btn-danger">Supprimer</button><button type="button" class="btn btn-success " data-toggle="modal" data-target="#modal-default">
+                          Modifier
+                          </button></td>
+                       
+                        <tr data-widget="expandable-table" aria-expanded="false">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><button type="button" class="btn btn-danger">Supprimer</button><button type="button" class="btn btn-success " data-toggle="modal" data-target="#modal-default"> Modifier
+                            </button></td>
+                      
+                      
+                            
+                            </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                            <div class="modal fade" id="modal-default">
+                                <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Rendez-Vous</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form  #f="ngForm" (ngSubmit)="rendezvous(f.value)">
+                                    <div class="card-body">
+                                         <div class="form-group"></div>
+                                         
+                                          
+                                              <label for="Numéro">N°</label>    
+                                              <input type="text" class="form-control" id="Numéro" placeholder="Numéro" ngModel name="Numéro">
+                                              <label>Date et Heure </label>
+                        
+                                          <div class="input-group">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text"><i class="far fa-clock"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control float-right" id="reservationtime" ngModel name="Date">
+                                          </div>
+                                    <label for="Nom et Prénom">Nom et Prénom</label>
+                                  <input type="text" class="form-control" id="Nom et Prénom" placeholder="Nom et Prénom" ngModel name="Nom et Prénom">
+                                  <label for="Numéro Téléphone">Numéro Téléphone</label>
+                                  <input type="text" class="form-control" id="Numéro Téléphone" placeholder="Numéro Téléphone" ngModel name="Numéro Téléphone">
+                                  
+                                  <div class="modal-footer justify-content-between">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                    
+                                    <div class="btn-group">
+                                      
+                                      <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+                                      
+                                    </div>
+                            </div>
+                           
+                          
+                            

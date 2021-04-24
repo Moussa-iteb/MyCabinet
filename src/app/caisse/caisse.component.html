@@ -1,0 +1,180 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card card-success">
+        <div class="card-header">
+          <h3  align="center">Encaissement/Dépenses Journaliéres</h3>
+        </div>
+       
+        <div class="card-body">
+          <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
+            Nouveau Mouvement
+            </button>
+        <input type="date" />
+        <button type="submit" class="btn btn-success">Affiche</button>
+      </div>
+<div class="card-body">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Numéro </th>
+          <th>Date</th>
+         
+          <th>Type Mouvement</th>
+          
+          <th>Montant</th>
+          <th>Subvention CNAM</th>
+          <th>Motif Dépense</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-widget="expandable-table" aria-expanded="false">
+         
+          
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr data-widget="expandable-table" aria-expanded="false">
+          
+            <td></td>
+            <td></td>
+            <td>
+            </td>
+            <td></td>
+          <td></td>
+          <td></td>
+            <tr data-widget="expandable-table" aria-expanded="false">
+                
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                </td>
+                <tr data-widget="expandable-table" aria-expanded="false">
+                   
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    </td>
+                    <tr data-widget="expandable-table" aria-expanded="false">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        
+                        <tr data-widget="expandable-table" aria-expanded="false">
+                            
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                            </td>
+                            <tr data-widget="expandable-table" aria-expanded="false">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                     
+                                <td></td>
+                                <td></td>
+                                <td>
+                                </td>
+                                <tr data-widget="expandable-table" aria-expanded="false">
+                                    <td></td>
+                                   
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+         
+                                    <td>
+                                    </td>
+                                    </tr>
+                                </tbody>
+                                </table>
+                               
+                                </div>
+                                <div class="modal fade" id="modal-default">
+                                  <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">Dépense/Encaissement</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">×</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                      <form #f="ngForm" (ngSubmit)="reglement(f.value)">
+                                      <div class="card-body">
+                                        <label for="tel">Type Caisse	</label>
+                                    
+                                                <select class="form-control select2" style="width: 100%;" ngModel name="Type Caisse">
+                                                  <option selected="selected">Dépense</option>
+                                                  <option>Encaissement</option>
+                                                 
+                                                </select>
+
+                                        <label for="Numéro">Numéro </label>    
+                                        <input type="text" class="form-control" id="Numéro" placeholder="Numéro" ngModel name="Numéro">
+                                           <div class="form-group"></div>
+                                           
+                                            <label>Date Mouvement </label>
+                          
+                                            <div class="input-group">
+                                              <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="far fa-clock"></i></span>
+                                              </div>
+                                              <input type="text" class="form-control float-right" id="reservationtime" ngModel name="date">
+                                            </div>
+                                            <!-- /.input group -->
+                                         
+                                        <!-- select -->
+                                        
+                                    
+                                               
+                                      
+                                    
+                                    
+                                    
+                                                
+                                    
+                                    
+                                    
+                                   
+                                    
+                                      
+                                  
+                                  
+                                    
+                                    <label for="Numéro">Montant</label>    
+                                        <input type="text" class="form-control" id="Montant" placeholder="Montant" ngModel name="Montant">
+                                        <label>Subvention CNAM </label>
+                                        
+                                        <input type="text" class="form-control" id="Subvention CNAM" placeholder="Subvention CNAM" ngModel name="Subvention CNAM">
+                                        <label for="Numéro">Motif Dépense </label>    
+                                        <input type="text" class="form-control" id="Motif Dépense" placeholder="Motif Dépense" ngModel name="Motif Dépense">
+                                      </div>
+                                        <div class="modal-footer justify-content-between">
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                  </div>
+                                  
+                                  </form>
+                                  </div>
+                                  </div>
+                                  </div>
+</div>
+    
+    </div>
+    
