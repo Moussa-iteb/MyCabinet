@@ -1,0 +1,40 @@
+<div class="row" style="margin-left: 400px; margin-top: 100px;">
+  <div class="col-md-12">
+                <form  #b="ngForm" (ngSubmit)="ajouterCertificatt(b.value)">
+                   <div class="modal-body col-md-6">
+                    <h3 class="profile-username text-center">Certificat Médical</h3>
+              
+                   <p> Je sous signé, déclare avoir examiné ce jour :<input type="datetime-local" id="meeting-time"
+                    name="meeting-time" ngModel name="DAT_REPOS">, Mr.(Mme_Mlle):
+                    <input type="text" class="form-control" id="NOM_P_C" placeholder="NOM_P_C" ngModel name="NOM_P_C">
+                   Au vu de cet examen l'état du patient nécessiterait <input type="number" class="form-control" id="NBRE_JOURS_REPOS" placeholder="duree" ngModel name="NBRE_JOURS_REPOS"> jour(s) de repos sauf complications a partir de ce jour.<br>
+                  </p> 
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  <p class="float-right"> <input type="datetime-local" id="meeting-time"
+                    name="meeting-time" ngModel name="DAT_REPOS"></p><p class="float-right">Fait a Tunis le:</p>
+
+
+
+
+
+
+                    </div>
+                   
+                  <div class="modal-footer">
+                   
+                    <button type="button" type="submit" class="btn btn-primary">Enregistrer</button>
+                  </div>
+              

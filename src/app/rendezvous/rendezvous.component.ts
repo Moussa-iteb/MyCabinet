@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PatientServiceService } from '../patient-service.service';
+class RDV {
+  
+}
 
 @Component({
   selector: 'app-rendezvous',
@@ -6,12 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rendezvous.component.sass']
 })
 export class RendezvousComponent implements OnInit {
-
-  constructor() { }
+  dataList = [];
+  constructor(private patientServiceService:PatientServiceService) {
+    this.patientServiceService.getRDV().then(response=> {
+      this.dataList = response.data;
+    })
+   }
 
   ngOnInit(): void {
   }
-  rendezvous(rendez:any) {
-    console.log(rendez);
+  ajouterrendez(liste:any) {
+    this.patientServiceService.ajouterrendez(liste).then(response=> {
+      console.log(response)
+    })
+    console.log(liste);
+    
 }
 }

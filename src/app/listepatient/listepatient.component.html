@@ -1,200 +1,99 @@
-
 <div class="row">
-    <div class="col-12">
-      <div class="card card-success">
-        <div class="card-header">
-          <h3  align="center">Liste Patient</h3>
-        </div>
-        <div class="card-body">
-          
-            <div class="input-group input-group-sm">
-              <input type="text" class="form-control" ngModel name="text">
-              <span class="input-group-append">
-                <button type="submit" class="btn btn-success">Rechercher</button>
-              </span>
-              <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
-                Ajouter Patient
-                </button>
-            </div>
+  <div class="col-12">
+    <div class="card card-success">
+      <div class="card-header">
+        <h3  align="center">Liste Patient</h3>
       </div>
-            <div class="card-body">
-          <table class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>Numéro Patient</th>
-                <th>Patient</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-widget="expandable-table" aria-expanded="false">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="submit" class="btn btn-danger">Supprimer</button><button type="submit" class="btn btn-success">Modifier</button><button type="submit" class="btn btn-success">Afficher</button>
-                </td>
-              </tr>
-              
-              <tr data-widget="expandable-table" aria-expanded="true">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="submit" class="btn btn-danger">Supprimer</button><button type="submit" class="btn btn-success">Modifier</button><button type="submit" class="btn btn-success">Afficher</button>
-  
-              </tr>
-             
-              <tr data-widget="expandable-table" aria-expanded="true">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="submit" class="btn btn-danger">Supprimer</button><button type="submit" class="btn btn-success">Modifier</button><button type="submit" class="btn btn-success">Afficher</button>
-  
-              </tr>
-              
-              <tr data-widget="expandable-table" aria-expanded="false">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="submit" class="btn btn-danger">Supprimer</button><button type="submit" class="btn btn-success">Modifier</button><button type="submit" class="btn btn-success">Afficher</button>
-  
-              </tr>
-              <tr data-widget="expandable-table" aria-expanded="false">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="submit" class="btn btn-danger">Supprimer</button><button type="submit" class="btn btn-success">Modifier</button><button type="submit" class="btn btn-success">Afficher</button>
-  
-              </tr>
-              <tr data-widget="expandable-table" aria-expanded="false">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="submit" class="btn btn-danger">Supprimer</button><button type="submit" class="btn btn-success">Modifier</button><button type="submit" class="btn btn-success">Afficher</button>
-  
-              </tr>
-              <tr data-widget="expandable-table" aria-expanded="false">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button type="submit" class="btn btn-danger">Supprimer</button><button type="submit" class="btn btn-success">Modifier</button><button type="submit" class="btn btn-success">Afficher</button>
-  
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
-      <div class="modal fade" id="modal-default">
-            <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Ajouter Patient</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <form #f="ngForm" (ngSubmit)="listepatient(f.value)">
-                <div class="card-body">
-                     <div class="form-group"></div>
-              <label for="C.I.N">C.I.N</label>
-              <input type="text" class="form-control" id="cin" placeholder="cin" ngModel name="cin">
-              <label for="prenom">Prénom</label>
-              <input type="text" class="form-control" id="prenom" placeholder="Prénom" ngModel name="prenom">
-              <label for="Nom">Nom</label>
-              <input type="text" class="form-control" id="Nom" placeholder="Nom" ngModel name="Nom">
-                  <!-- select -->
-                  <label>Sexe</label>
-                      <select class="form-control select2" style="width: 100%;" ngModel name="Sexe">
-                        <option selected="selected">Femme</option>
-                        <option>Homme</option>
-                      </select>
-                      
-                        <label>Date De Naissance</label>
-                          <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                              <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" ngModel name="date"/>
-                              <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                              </div>
-                          </div>
-                          <label for="Age">Age</label>
-              <input type="text" class="form-control" id="Age" placeholder="Age" ngModel name="Age">
-              <label>Civilité</label>
-                      <select class="form-control select2" style="width: 100%;" ngModel name="Civilité">
-                        <option selected="selected">Célibataire</option>
-                        <option>Marié(e)</option>
-                        <option>Divorcé(e)</option>
-                      </select>
-                          <label for="Email">Email</label>    
-              <input type="text" class="form-control" id="Email" placeholder="Email" ngModel name="email">
-                <label for="Adresse">Adresse</label>
-              <input type="text" class="form-control" id="Adresse" placeholder="Adresse" ngModel name="Adresse">
-              
-              <label for="tel">Téléphone</label>
-              <input type="text" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="" inputmode="text" ngModel name="Numéro">
-              <label for="Profession">Profession</label>
-              <input type="text" class="form-control" id="Profession" placeholder="Profession" ngModel name="Profession">
-            </div>
-  
-            <h3 class="card-title">Maladie Chronique et APCI</h3>
-            <form role="form">
-              <div class="card-body">
-                   <div class="form-group"></div>
-            <label for="Nom">Nom Maladie Chronique</label>
-            <input type="text" class="form-control" id="Nom" placeholder="Nom Maladie Chronique" ngModel name="NOM">
-            <label for="traitement">Traitement Chronique</label>
-            <input type="text" class="form-control" id="Traitement Chronique" placeholder="Traitement Chronique" ngModel name="traitement">
-            </div>
-            </form>
-            <h3 class="card-title">Caisse</h3>
-            <form role="form">
-              <div class="card-body">
-                   <div class="form-group"></div>
-                   <label>Type Caisse</label>
-                      <select class="form-control select2" style="width: 100%;" ngModel name="CNAM">
-                        <option selected="selected">Régime médecin famille</option>
-                        <option>Régime de remboursement</option>
-                        <option>Régime de la sante public</option>
-                      </select>
-            <label for="Nom">Identifiant</label>
-            <input type="text" class="form-control" id="Identifiant" placeholder="Identifiant" ngModel name="Identifiant">
-            <label for="Qual">Qual</label>
-            <input type="text" class="form-control" id="Qual" placeholder="Enfant a Charge (..)" ngModel name="Qual">
-            <label>Validation</label>
-                          <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                              <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" ngModel name="Validation"/>
-                              <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
-                                  <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                              </div>
-                          </div>
-                          <label for="APCI">Code APCI</label>
-            <input type="text" class="form-control" id="APCI" placeholder="APCI" ngModel name="APCI">
-            <label for="APCI">Med.F</label>
-            <input type="text" class="form-control" id="med.f" placeholder="Med.F" ngModel name="MED.F">
-            
-           
-            </div>
-            </form>
-            
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-              <button type="submit" class="btn btn-primary">Enregistrer</button>
-            </div>
-            
-            </form>
-            </div>
-            </div>
-            </div>
+      <div class="card-body">         
+<div class="input-group input-group-sm">
+  <input type="text" class="form-control" ngModel name="text">
+  <span class="input-group-append">
+ <button type="submit" class="btn btn-success">Rechercher</button>
+ </span>
+  <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
+   Ajouter Patient
+    </button>
+</div>
+</div>
+<div class="card-body">
+  <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Nom Patient</th>
+              <th>Prénom Patient</th>
+              <th>Date Naissance </th>
+              <th>Numéro Téléphone</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let Patient  of dataList">
+            <tr data-widget="expandable-table" aria-expanded="false">
+              <td>{{Patient['NOM_P']}}</td>
+              <td>{{Patient['PREN_P']}}</td>
+              <td>{{Patient['DAT_NAI_P']}}</td>
+              <td>{{Patient['NUM_TEL_P']}}</td>
+              <td><button type="submit" class="btn btn-danger deletepatient(this.id)" >Supprimer</button>
+                <button type="submit" class="btn btn-success">Modifier</button>
+                <button type="submit" class="btn btn-success" [routerLink]="['/profilpatient/'+Patient['NUM_FICH_P']]">Afficher</button>
+                
+              </td>
+            </tr>           
+          </tbody>
+        </table>
+      </div>       
     </div>
-  </div>
-  </div>
+    <div class="modal fade" id="modal-default">
+      <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Ajouter Patient</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form #f="ngForm" (ngSubmit)="addPatient(f.value)">
+          <div class="card-body">
+               <div class="form-group"></div>
+        <label for="C.I.N">C.I.N</label>
+        <input type="text" class="form-control" id="CIN_P" placeholder="cin" ngModel name="CIN_P">
+        <label for="prenom">Prénom</label>
+        <input type="text" class="form-control" id="NOM_P" placeholder="Nom" ngModel name="NOM_P">
+        <label for="Nom">Nom</label>
+        <input type="text" class="form-control" id="PREN_P" placeholder="Prénom" ngModel name="PREN_P">              
+            <label>Sexe</label>
+                <select class="form-control select2" style="width: 100%;" ngModel name="SEXE_P">
+                  <option selected="selected">Femme</option>
+                  <option>Homme</option>
+                </select>
+                  
+                  
+                <label for="start">Date de Naissance:</label><br>
+
+                <input type="date" id="start" name="trip-start" ngModel name="DAT_NAI_P"><br>
+                       
+                
+        <label>Civilité</label>
+                <select class="form-control select2" style="width: 100%;" ngModel name="CIVILITE_P">
+                  <option selected="selected">Célibataire</option>
+                  <option>Marié(e)</option>
+                  <option>Divorcé(e)</option>
+                </select>
+                    <label for="Email">Email</label>    
+        <input type="text" class="form-control" id="EMAIL_P" placeholder="Email" ngModel name="EMAIL_P">
+          <label for="Adresse">Adresse</label>
+        <input type="text" class="form-control" id="ADR_P" placeholder="Adresse" ngModel name="ADR_P">
+        <label for="tel">Téléphone</label>
+        <input type="text" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="" inputmode="text" ngModel name="NUM_TEL_P">
+        <label for="Profession">Profession</label>
+        <input type="text" class="form-control" id="PROF_P" placeholder="Profession" ngModel name="PROF_P">
+      </div>
+      <div class="modal-footer justify-content-between">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+      </div>
+      </form>
+      </div>
+      </div>
+      </div>
+</div>
+</div></div> 

@@ -1,0 +1,649 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card card-success">
+      <div class="card-header">
+        <h3  align="center">Fiche Patient</h3>
+      </div>
+      <div class="card-body">
+        <button  type="button" class="btn btn-default float-right" data-toggle="modal" data-target="#modal-default">
+        Ajouter Consultation
+        </button>
+        <button type="button" class="btn btn-default float-right" data-toggle="modal" data-target="#modal-content">
+          Ajouter Caisse
+          </button>
+          <button type="button" class="btn btn-default float-right" data-toggle="modal" data-target="#modal-malade">
+            Ajouter Maladie Chronique
+            </button>
+            <button type="button" class="btn btn-default float-right" data-toggle="modal" data-target="#modal-Rendezvous">
+              Ajouter Rendez-Vous
+              </button>
+              <button type="button" class="btn btn-default float-right" data-toggle="modal" data-target="#modal-certificat">
+                Ajouter Certificat
+                </button>
+          <div class="card-body">
+              <div class="card-body box-profile">
+            <div class="text-center">        
+            </div>
+            <h3 class="profile-username text-center">{{Patient.PREN_P}} {{Patient.NOM_P}}</h3>
+            <ul class="list-group list-group-unbordered mb-3">
+              <li class="list-group-item">
+                <b>C.I.N</b> <a class="float-right">{{Patient.CIN_P}}</a>
+              </li>
+             
+              <li class="list-group-item">
+                <b>Date Naissance</b> <a class="float-right">{{Patient.DAT_NAI}}</a>
+              </li>
+              
+              <li class="list-group-item">
+                <b>Email</b> <a class="float-right">{{Patient.EMAIL_P}}</a>
+              </li>
+              <li class="list-group-item">
+                <b>Sexe</b> <a class="float-right">{{Patient.SEXE_P}}</a>
+              </li>
+              <li class="list-group-item">
+                <b>Civilité</b> <a class="float-right">{{Patient.CIVILITE_P}}</a>
+              </li>
+              <li class="list-group-item">
+                <b>Profession</b> <a class="float-right">{{Patient.PROF_P}}</a>
+              </li>
+              <li class="list-group-item">
+                <b>Numéro Téléphone</b> <a class="float-right">{{Patient.NUM_TEL_P}}</a>
+              </li>
+              <li class="list-group-item">
+                <b>Adresse</b> <a class="float-right">{{Patient.ADR_P}}</a>
+              </li>
+</ul>
+<div class="card-body">
+  <div class="card card-success">
+    <div class="card-header">
+      <h3  align="center">CNAM</h3>
+    </div>
+    </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Régime CNAM</th>
+        <th>Identification</th>
+        <th>Validation</th>
+        <th>Qualification</th>
+        <th>Code Médecin.F</th>
+        <th>Code APCI</th>
+       
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let CNAM of cnamList">
+      <tr data-widget="expandable-table" aria-expanded="false">
+        <td>{{CNAM['TYP_CNAM']}}</td>
+        <td>{{CNAM['NUM_CNAM_P']}}</td>
+        <td>{{CNAM['VAL_CNAM']}}</td>
+        <td>{{CNAM['QUAL']}}</td>
+        <td>{{CNAM['CODE_MED_F']}}</td>
+        <td>{{CNAM['CODE_APCI']}}</td>
+        
+        <td><button type="button" class="btn btn-danger">Supprimer</button>
+          <button type="button" class="btn btn-success" >Modifier</button>
+        </td>
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+<div class="card-body">
+  <div class="card card-success">
+    <div class="card-header">
+      <h3  align="center">Maladie Chronique</h3>
+    </div>
+    </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Nom Maladie</th>
+        <th>Traitement</th>
+        
+      </tr>
+    </thead>
+    <tbody *ngFor="let MALADIE_CHRONIQUE of maladeList">
+      <tr data-widget="expandable-table" aria-expanded="false">
+        <td>{{ MALADIE_CHRONIQUE['NOM_M']}}</td>
+        <td>{{ MALADIE_CHRONIQUE['TR_M']}}</td>
+        
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
+</div>
+<div class="card-body">
+  <div class="card card-success">
+    <div class="card-header">
+      <h3  align="center">Liste des Consultation</h3>
+    </div>
+    </div>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+       
+        <th>Date Consultation</th>
+        <th>Type Consultation</th>
+       
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let Consultationt of dataList">
+      <tr data-widget="expandable-table" aria-expanded="false">
+        
+        <td>{{Consultationt['DAT_CONS']}}</td>
+        <td>{{Consultationt['TYPE_CONS']}}</td>
+        
+              <td><button  (click)="onSave(Consultationt['NUM_CONS'])" type="button"  class="btn btn-default float-right" data-toggle="modal" data-target="#modal-encaissement">
+              Ajouter Encaissement
+              </button>
+              <button (click)="onSave(Consultationt['NUM_CONS'])" type="button" class="btn btn-default " data-toggle="modal" data-target="#modal-A">
+              Ajouter Acte
+              </button>
+              <button (click)="onSave(Consultationt['NUM_CONS'])" type="button" class="btn btn-default " data-toggle="modal" data-target="#modal-Lettre">
+              Ajouter Lettre Confrére
+              </button>
+              <button (click)="onSave(Consultationt['NUM_CONS'])" type="button" class="btn btn-default " data-toggle="modal" data-target="#modal-Ordonnance">
+              Ajouter Ordonnance
+              </button>
+              <button (click)="onSave(Consultationt['NUM_CONS'])" type="button" class="btn btn-default " data-toggle="modal" data-target="#modal-Ex">
+                Ajouter Examen
+                </button>
+              <button type="button" class="btn btn-success" [routerLink]="['/profilcons/'+Consultationt['NUM_CONS']]">Afficher</button>
+              </td>
+              </tr>
+              </tbody>
+              </table>
+              </div>
+          </div>
+          <div class="modal fade" id="modal-default">
+            <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Ajouter Consultation</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form #f="ngForm" (ngSubmit)="ajouterconsultationt(f.value)">
+                <div class="card-body">
+                     <div class="form-group"></div> 
+                      <label for="meeting-time">Date et heure de Consultation</label>
+                      <input type="datetime-local" id="meeting-time"
+                             name="meeting-time" ngModel name="DAT_CONS"><br>   
+                  <label>Type Consultation</label>
+                      <select class="form-control select2" style="width: 100%;" ngModel name="TYPE_CONS">
+                        <option selected="selected">Consultation</option>
+                        <option>Controle</option>
+                      </select>       
+              <label for="taiile">Taille</label>
+              <input type="text" class="form-control" id="TAIL_P_CONS" placeholder="TAIL_P_CONS" ngModel name="TAIL_P_CONS">
+                          <label for="Poids">Poids</label>    
+                          <input type="text" class="form-control" id="POID_P_CONS" placeholder="POID_P_CONS" ngModel name="POID_P_CONS">
+                          <label for="taiile">Tension</label>
+              <input type="text" class="form-control" id="TEN_P_CONS" placeholder="TEN_P_CONS" ngModel name="TEN_P_CONS">
+                <label for="Température">Température</label>
+              <input type="text" class="form-control" id="TEMP_P_CONS" placeholder="TEMP_P_CONS" ngModel name="TEMP_P_CONS">  
+              <label for="tel">Fréquence Cardique</label>
+              <input type="text" class="form-control" id="F_C_P_CONS"placeholder="Fréquence" ngModel name="F_C_P_CONS">
+              <label>Observation</label>
+                        
+             
+              <textarea class="form-control" rows="3" placeholder="Observation..." ngModel name="OBS_CONS"></textarea>
+              
+          
+          
+            </div>
+
+            <div class="modal-footer justify-content-between">
+              
+              <button type="submit" class="btn btn-primary">Enregistrer</button>
+              </div>
+              </form>
+              </div>
+              </div>
+              </div>
+      </div>
+      <div class="modal fade" id="modal-content">
+        <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Ajouter CNAM</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #c="ngForm" (ngSubmit)="ajoutercnam(c.value)">
+            <div class="card-body">
+                 <div class="form-group"></div>    
+              <label>Régime CNAM</label>
+                  <select class="form-control select2" style="width: 100%;" ngModel name="TYP_CNAM">
+                    <option selected="selected">Régime de la sante public</option>
+                    <option>Régime médecin famille</option>
+                    <option>Régime de remboursement</option>
+                  </select>
+                      <label for="Identification">Identification</label>
+          <input type="text" class="form-control" id="NUM_CNAM_P" placeholder="Identification" ngModel name="NUM_CNAM_P">
+          <label for="meeting-time">Validation</label><br>
+          <input type="datetime-local" id="meeting-time"
+                 name="meeting-time" ngModel name="VAL_CNAM"  ><br>
+          <label for="Qualification">Qualification</label>
+          <input type="text" class="form-control" id="QUAL" placeholder="Qualification" ngModel name="QUAL">
+          <label for="code">Code APCI</label>
+          <input type="text" class="form-control" id="CODE_APCI"placeholder="CODE_APCI" ngModel name="CODE_APCI">
+          <label>Code Médecin.F</label>
+          <input type="text" class="form-control" id="CODE_MED_F"placeholder="CODE_MED_F" ngModel name="CODE_MED_F">
+        </div>
+        <div class="modal-footer justify-content-between">
+
+          <button type="submit" class="btn btn-primary">Enregistrer</button>
+          </div>
+          </form>
+          </div>
+          </div>
+          </div>
+  </div>
+  <div class="modal fade" id="modal-malade">
+    <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Ajouter Maladie Chronique </h4>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form #m="ngForm" (ngSubmit)="ajoutermalade(m.value)">
+        <div class="card-body"> 
+             <div class="form-group"></div>
+                  <label for="NOM">Nom Maladie Chronique </label><br>
+                  
+                  <select name="id_M" ngModel >
+                    <option *ngFor="let malade of Malades" value="{{malade.NUM_M}}">{{malade.NOM_M}}</option>
+                  </select><br>
+      <label for="Traitement">Traitement Chronique</label> <br> 
+      <select name="NUM_MED" ngModel >
+        <option *ngFor="let med of Medicaments" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
+      </select><br>
+    </div>
+    <div class="modal-footer justify-content-between">
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+      <button  type="button" class="btn btn-default " data-toggle="modal" data-target="#modal-m">
+        Ajouter Maladie Chronique
+        </button>
+      </div>
+      </form>
+      </div>
+      </div>
+      </div>
+</div>
+<div class="modal fade" id="modal-m">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Ajouter Maladie Chronique  </h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+      <form #o="ngForm" (ngSubmit)="ajouterm(o.value)">
+      <div class="card-body">
+       
+           <div class="form-group"></div>
+          
+                <label for="NOM">Nom Maladie </label>
+    <input type="text" class="form-control" id="NOM_M" placeholder="NOM" ngModel name="NOM_M">
+  
+  </div>
+  <div class="modal-footer justify-content-between">
+    
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-Rendezvous">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Nouveau Rendez-Vous </h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body"> 
+    <form  #b="ngForm" (ngSubmit)="ajouterrendezvous(b.value)">
+      <div class="card-body">
+           <div class="form-group"></div>
+           <label for="meeting-time">Date et heure de RDV:</label><br>
+           <input type="datetime-local" id="meeting-time"
+                  name="meeting-time" ngModel name="DAT_RDV"><br>
+       <label for="Nom et Prénom">Nom et Prénom</label>
+       <input type="text" class="form-control" id="{{Patient.PREN_P}} {{Patient.NOM_P}}" placeholder="{{Patient.PREN_P}} {{Patient.NOM_P}}" ngModel name="{{Patient.PREN_P}} {{Patient.NOM_P}}">
+ 
+<label for="Numéro Téléphone">Numéro Téléphone</label>
+<input type="text" class="form-control" id="{{Patient.NUM_TEL_P}}" placeholder="{{Patient.NUM_TEL_P}}" ngModel name="{{Patient.NUM_TEL_P}}">
+   
+  </div>
+  <div class="modal-footer justify-content-between">
+    
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-encaissement">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Dépense/Encaissement</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form #e="ngForm" (ngSubmit)="ajouterEnc(e.value)">
+      <div class="card-body">
+        <label for="type">Type Caisse	</label>
+    
+                <select class="form-control select2" style="width: 100%;" ngModel name="TYPE_M_C">
+                  <option selected="selected">Encaissement</option>
+                </select>
+
+           <div class="form-group"></div>
+   
+            <label for="meeting-time">Date Mouvement:</label><br>
+            <input type="datetime-local" id="meeting-time"
+            name="meeting-time" ngModel name="DAT_M_C"><br>
+                             
+    <label for="Numéro">Montant</label>    
+        <input type="text" class="form-control" id="MONT_M_C" placeholder="Montant" ngModel name="MONT_M_C">
+      
+        <label for="Numéro">Subvention CNAM </label>   
+       
+        <input type="text" class="form-control" id="SUBV_CNAM" placeholder="Subvention" ngModel name="SUBV_CNAM">
+       
+      </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+  </div>
+  
+  </form>
+  </div>
+  </div>
+  </div>
+</div>
+<div class="modal fade" id="modal-A">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Ajouter Acte Consultation </h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+      <form #a="ngForm" (ngSubmit)="ajouteracteconsult(a.value)">
+      <div class="card-body">
+       
+           <div class="form-group"></div>
+          
+                <label for="NOM">Nom Acte </label>
+                <select name="id_act" ngModel >
+                  <option *ngFor="let Specialite of Acts" value="{{Specialite.NUM_ACTE}}">{{Specialite.NOM_ACTE}}</option>
+                </select>
+                
+  
+  </div>
+  <div class="modal-footer justify-content-between">
+   
+      <button type="button"  class="btn btn-default float-right" data-toggle="modal" data-target="#modal-ACTE">
+        Ajouter Acte
+        </button>
+     
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-ACTE">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Ajouter Acte  </h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+      <form #x="ngForm" (ngSubmit)="ajouteracte(x.value)">
+      <div class="card-body">
+       
+           <div class="form-group"></div>
+          
+                <label for="NOM">Nom Acte </label>
+    <input type="text" class="form-control" id="NOM_ACTE" placeholder="NOM" ngModel name="NOM_ACTE">
+  
+  </div>
+  <div class="modal-footer justify-content-between">
+    
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-Lettre">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form #l="ngForm" (ngSubmit)="ajouterlettre(l.value)">
+        <div class="modal-body">
+        <h2 class="profile-username text-center">Lettre Confrére</h2>
+        <p>Nom et Prénom:<input type="text" class="form-control" id="{{Patient.PREN_P}} {{Patient.NOM_P}}" placeholder="{{Patient.PREN_P}} {{Patient.NOM_P}}" ngModel name="{{Patient.PREN_P}} {{Patient.NOM_P}}">
+          Tél:<input type="text" class="form-control" id="TEL_CONF" placeholder="TEL_CONF" ngModel name="TEL_CONF">
+          Adresse Cabinet:<input type="text" class="form-control" id="ADR_CONF" placeholder="ADR_CONF" ngModel name="ADR_CONF"> </p>
+          <p><b><u> Lettre de liaison</u></b> pour Dr  <input type="text" class="form-control" id="PREN_CONF" placeholder="Prénom" ngModel name="PREN_CONF">  <input type="text" class="form-control" id="NOM_CONF" placeholder="NOM" ngModel name="NOM_CONF"> Spécialiste en  <input type="text" class="form-control" id="SPEC_CONF" placeholder="SPEC_CONF" ngModel name="SPEC_CONF"></p>
+           <p>
+            <b><u> Cher Confrére</u></b>, je suis prie de bien vouloir prendre en charge le patient(e) <input type="text" class="form-control" id="{{Patient.PREN_P}} {{Patient.NOM_P}}" placeholder="{{Patient.PREN_P}} {{Patient.NOM_P}}" ngModel name="{{Patient.PREN_P}} {{Patient.NOM_P}}">,  
+           qui nous consule pour une affection <textarea class="form-control" rows="3" placeholder="Déscription..." ngModel name="DESC_L"></textarea> .</p>
+  </div>
+  <div class="modal-footer justify-content-between">
+   
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+</div>   
+<div class="modal fade" id="modal-Ordonnance">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form #o="ngForm" (ngSubmit)="ajouterprescription(o.value)">
+      <div class="card-body">
+       
+            <ul class="list-group list-group-unbordered mb-3">
+             
+                
+            <b class="float-right">Date de Consultation:<input type="datetime-local" id="meeting-time"
+              name="meeting-time" ngModel name="DAT_CONS"></b><br>
+
+            <h3 class="profile-username text-center">Ordonnance Médicale</h3>
+            <b>Code CNAM: <input type="text" class="form-control" id="{{Patient.PREN_P}}" placeholder="{{Patient.PREN_P}}" ngModel name="{{Patient.NOM_P}}"></b><br>
+            <b>Bénéficiaire:<input type="text" class="form-control" id="{{Patient.PREN_P}} {{Patient.NOM_P}}" placeholder="{{Patient.PREN_P}} {{Patient.NOM_P}}" ngModel name="{{Patient.PREN_P}} {{Patient.NOM_P}}"></b> <br>
+            <b>APCI:<input type="text" class="form-control" id="{{Patient.PREN_P}} {{Patient.NOM_P}}" placeholder="{{Patient.PREN_P}} {{Patient.NOM_P}}" ngModel name="{{Patient.PREN_P}} {{Patient.NOM_P}}"></b><br>
+            <b><u>Prescription:</u></b><br>
+Nom Médicament/
+Quantité/
+Durée
+            
+    </ul>
+  
+  </div>
+  <div class="modal-footer justify-content-between">
+   
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    <button type="button" class="btn btn-default float-right" data-toggle="modal" data-target="#modal-med">
+      Ajouter Médicament
+      </button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-certificat">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  <form  #b="ngForm" (ngSubmit)="ajouterCertificat(b.value)">
+     <div class="modal-body">
+      <h3 class="profile-username text-center">Certificat Médical</h3>
+
+     <p> Je sous signé, déclare avoir examiné ce jour :<input type="datetime-local" id="meeting-time"
+      name="meeting-time" ngModel name="DAT_REPOS">, Mr.(Mme_Mlle):
+      <input type="text" class="form-control" id="{{Patient.PREN_P}} {{Patient.NOM_P}}" placeholder="{{Patient.PREN_P}} {{Patient.NOM_P}}" ngModel name="{{Patient.PREN_P}} {{Patient.NOM_P}}">
+     Au vu de cet examen l'état du patient nécessiterait <input type="number" class="form-control" id="NBRE_JOURS_REPOS" placeholder="duree" ngModel name="NBRE_JOURS_REPOS"> jour(s) de repos sauf complications a partir de ce jour.<br>
+    </p> 
+
+
+
+
+
+
+
+    <p class="float-right"> <input type="datetime-local" id="meeting-time"
+      name="meeting-time" ngModel name="DAT_REPOS"></p><p class="float-right">Fait a Tunis le:</p>
+
+
+
+
+
+
+
+      </div>
+     
+
+
+
+    <div class="modal-footer">
+     
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+      
+    </div>
+  </form>
+  </div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="modal-Ex">
+  
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+      <form #o="ngForm" (ngSubmit)="ajouterExamen(o.value)">
+      <div class="card-body">
+      
+            
+        <ul class="list-group list-group-unbordered mb-3">
+         
+     
+            <b class="float">Date de Consultation:<input type="datetime-local" id="meeting-time"
+              name="meeting-time" ngModel name="DAT_CONS"></b><br>
+            <h3 class="profile-username text-center">Ordonnance Médicale Pour examens  <select class="form-control select2 tex text-center" style="width: 100%;" ngModel name="TYPE_EX">
+              <option selected="selected text-center">SCANNER</option>
+              <option>IRM</option>
+              <option>Imagerie</option>
+              <option>RADIO</option>
+              <option>Analyse Biologique</option>
+            </select> </h3>
+            <label for="NOM">Code CNAM: </label><input type="text" class="form-control" id="{{Patient.PREN_P}}" placeholder="{{Patient.PREN_P}}" ngModel name="{{Patient.NOM_P}}">
+            <label for="NOM">Patient:</label><input type="text" class="form-control" id="{{Patient.PREN_P}}" placeholder="{{Patient.PREN_P}}" ngModel name="{{Patient.NOM_P}}">
+            <label for="NOM">APCI: </label><input type="text" class="form-control" id="{{Patient.PREN_P}}" placeholder="{{Patient.PREN_P}}" ngModel name="{{Patient.NOM_P}}">
+            <label for="NOM"><u>Examens demandées:</u></label><br>
+            <textarea class="form-control" rows="3" placeholder="1/ Examen demandées..." ngModel name="PRESCRIPTION_EX"></textarea>
+        </ul>
+  </div>
+  <div class="modal-footer justify-content-between">
+   
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    
+    </div>
+  
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-med">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Ajouter Médicament  </h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+      <form #l="ngForm" (ngSubmit)="ajoutermed(l.value)">
+      <div class="card-body">
+       
+           <div class="form-group"></div>
+          
+                <label for="NOM">Nom Médicament </label>
+    <input type="text" class="form-control" id="NOM_MED" placeholder="NOM" ngModel name="NOM_MED">
+  
+  </div>
+  <div class="modal-footer justify-content-between">
+   
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+</div>
+      </div></div></div> 

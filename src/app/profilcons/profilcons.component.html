@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card card-success">
+        <div class="card-header">
+          <h3  align="center">Consultation {{Consultationt.NUM_CONS}}</h3>
+        </div>
+            <div class="card-body">
+              
+                <div class="card-body">
+                <div class="card-body box-profile">
+            
+      <ul class="list-group list-group-unbordered mb-3">
+        <li class="list-group-item">
+          <b>Date et heure de Consultation</b> <a class="float-right">{{Consultationt.DAT_CONS}}</a>
+        </li>
+        <li class="list-group-item">
+          <b>Type Consultation</b> <a class="float-right">{{Consultationt.TYPE_CONS}}</a>
+        </li>
+        <li class="list-group-item">
+          <b>Taille</b> <a class="float-right">{{Consultationt.TAIL_P_CONS}}</a>
+        </li>
+        <li class="list-group-item">
+          <b>Poids</b> <a class="float-right">{{Consultationt.POID_P_CONS}}</a>
+        </li>
+        <li class="list-group-item">
+          <b>Tension</b> <a class="float-right">{{Consultationt.TEN_P_CONS}}</a>
+        </li>
+        <li class="list-group-item">
+          <b>Température</b> <a class="float-right">{{Consultationt.TEMP_P_CONS}}</a>
+        </li>
+        <li class="list-group-item">
+          <b>Fréquence Cardiaque</b> <a class="float-right">{{Consultationt.F_C_P_CONS}}</a>
+        </li>
+        <li class="list-group-item">
+          <b>Observation</b> <a class="float-right">{{Consultationt.OBS_CONS}}</a>
+        </li>
+        </ul>
+                </div>
+            </div>
+                  
+            <div class="card-body">
+              <div class="card card-success">
+                <div class="card-header">
+                  <h3  align="center">liste des Actes</h3>
+                </div>
+                </div>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                   <th>Nom Acte</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let Acte of acteList">
+                  <tr data-widget="expandable-table" aria-expanded="true">
+                    <td>{{Acte['NOM_ACTE']}}</td>
+                   
+                  </tr>
+                 
+                </tbody>
+              </table>
+            </div>
+            </div>
+            <div class="card-body">
+              <div class="card card-success">
+                
+               
+            <div class="card-body">
+              <div class="card card-success">
+                <div class="card-header">
+                  <h3  align="center">Liste des examens complimentaires</h3>
+                </div>
+                </div>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                  
+                    <th>Type examen</th>
+                    
+                    
+                    <th>Action</th>
+                  
+                  </tr>
+                </thead>
+                <tbody>
+              
+                  <td></td>
+                  
+                  <button type="submit" class="btn btn-success">Afficher</button>
+                </tbody>
+              </table>
+            </div>
+        
+        </div>
+        
+        
+</div>
+      </div></div></div>

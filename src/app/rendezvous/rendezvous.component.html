@@ -21,7 +21,6 @@
                     <tr>
                       <th>Numéro de RDV</th>
                       <th>Date et Heure</th>
-                      
                       <th>Nom et Prénom</th>
                       <th>Numéro Téléphone</th>
                       <th>Action</th>
@@ -30,38 +29,18 @@
                       
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody *ngFor="let RDV of dataList">
                     <tr data-widget="expandable-table" aria-expanded="false">
-                      
-                     
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><button type="button" class="btn btn-danger">Supprimer</button><button type="button" class="btn btn-success " data-toggle="modal" data-target="#modal-default">
+                      <td>{{RDV['NUM_RDV']}}</td>
+                      <td>{{RDV['DAT_RDV']}} {{RDV['HEURE_RDV']}}</td>
+                      <td>{{RDV['NOM_P_RDV']}}</td>
+                      <td>{{RDV['NUM_TEL_P_RDV']}}</td>
+                      <td><button type="button" class="btn btn-danger">Supprimer</button>
+                        <button type="button" class="btn btn-success " data-toggle="modal" data-target="#modal-default">
                         Modifier
                         </button></td>
                     </tr>
-                    <tr data-widget="expandable-table" aria-expanded="false">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><button type="button" class="btn btn-danger">Supprimer</button><button type="button" class="btn btn-success " data-toggle="modal" data-target="#modal-default">
-                          Modifier
-                          </button></td>
-                       
-                        <tr data-widget="expandable-table" aria-expanded="false">
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button type="button" class="btn btn-danger">Supprimer</button><button type="button" class="btn btn-success " data-toggle="modal" data-target="#modal-default"> Modifier
-                            </button></td>
-                      
-                      
-                            
-                            </tr>
+                   
                             </tbody>
                             </table>
                         </div>
@@ -75,36 +54,24 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form  #f="ngForm" (ngSubmit)="rendezvous(f.value)">
+                                  <form  #b="ngForm" (ngSubmit)="ajouterrendez(b.value)">
                                     <div class="card-body">
                                          <div class="form-group"></div>
-                                         
-                                          
-                                              <label for="Numéro">N°</label>    
-                                              <input type="text" class="form-control" id="Numéro" placeholder="Numéro" ngModel name="Numéro">
-                                              <label>Date et Heure </label>
-                        
-                                          <div class="input-group">
-                                            <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control float-right" id="reservationtime" ngModel name="Date">
-                                          </div>
-                                    <label for="Nom et Prénom">Nom et Prénom</label>
-                                  <input type="text" class="form-control" id="Nom et Prénom" placeholder="Nom et Prénom" ngModel name="Nom et Prénom">
+                                        
+                                              <label for="meeting-time">Date et heure de RDV:</label><br>
+
+                                              <input type="datetime-local" id="meeting-time"
+                                                     name="meeting-time" ngModel name="DAT_RDV"><br>
+                                          <label for="Nom et Prénom">Nom et Prénom</label>
+                                          <input type="text" class="form-control" id="NOM_P_RDV" placeholder="Nom et Prénom" ngModel name="NOM_P_RDV">
+                                    
                                   <label for="Numéro Téléphone">Numéro Téléphone</label>
-                                  <input type="text" class="form-control" id="Numéro Téléphone" placeholder="Numéro Téléphone" ngModel name="Numéro Téléphone">
+                                  <input type="text" class="form-control" id="NUM_TEL_P_RDV" placeholder="Numéro Téléphone" ngModel name="NUM_TEL_P_RDV">
                                   
                                   <div class="modal-footer justify-content-between">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                                    
-                                    <div class="btn-group">
-                                      
-                                      <button type="submit" class="btn btn-primary">Enregistrer</button>
-
-                                      
-                                    </div>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button> 
+                                      <button type="submit" class="btn btn-primary">Enregistrer</button>    
                             </div>
-                           
+                                    </div></form></div></div></div></div></div></div></div></div></div>          
                           
                             

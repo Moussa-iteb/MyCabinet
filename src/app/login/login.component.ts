@@ -14,12 +14,14 @@ export class LoginComponent implements OnInit {
   }
 
   login(med:any) {
-    console.log(med);
-    //this.router.navigateByUrl('dashboard/home');
+    if (med.email === 'admin' && med.password ==='admin'){
+      this.router.navigateByUrl('dashboard/home');
+    } else {
+      alert('erreur');
+    }
+    
+   
   }
-  inscription(){
-    this.router.navigateByUrl('dashboard/inscription');
-
-  }
+  
 
 }

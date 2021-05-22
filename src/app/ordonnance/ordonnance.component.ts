@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-ordonnance',
@@ -6,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ordonnance.component.sass']
 })
 export class OrdonnanceComponent implements OnInit {
+  dataList = [];
+  prescription:any;
 
-  constructor() { }
-
+ 
   ngOnInit(): void {
   }
   ordonnance(ordonnance:any) {
