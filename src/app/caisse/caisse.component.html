@@ -7,14 +7,23 @@
         <div class="card-body">
           <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
             Nouveau Dépense
-            </button>    
-                
+            </button>   
+            <form #i="ngForm" (ngSubmit)="rechercher(i.value)">
+              <div class="card-body"> 
+            
+            
             <input type="date" id="meeting-time"
             name="meeting-time" ngModel name="DAT_M_C">
-         
+            <div class="form-check" ngModel name="TYPE_M_C">
+              <input class="form-check-input" type="radio" ngModel name="radio1" >
+              <label class="form-check-label">Dépense</label>
+              <input class="form-check-input" type="radio" name='radio2' >
+              <label class="form-check-label">Encaissement</label>
+            </div></div>
         <button type="submit" class="btn btn-success">Affiche</button>
     
-      </div>
+      
+    </form>
 <div class="card-body">
     <table class="table table-bordered table-hover">
       <thead>

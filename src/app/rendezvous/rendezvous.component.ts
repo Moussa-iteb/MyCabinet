@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientServiceService } from '../patient-service.service';
+import { DatePipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 class RDV {
+  static DAT_RDV: any;
   
 }
 
@@ -11,10 +14,12 @@ class RDV {
 })
 export class RendezvousComponent implements OnInit {
   dataList = [];
-  constructor(private patientServiceService:PatientServiceService) {
-    this.patientServiceService.getRDV().then(response=> {
-      this.dataList = response.data;
-    })
+  RDV:any;
+  DAT_RDV:any;
+  id:any;
+  constructor(private patientServiceService:PatientServiceService,private activatedRoute : ActivatedRoute) {
+  
+  
    }
 
   ngOnInit(): void {
@@ -26,4 +31,13 @@ export class RendezvousComponent implements OnInit {
     console.log(liste);
     
 }
+Affiche(id:any){
+  if(RDV.DAT_RDV===this.DAT_RDV){
+  this.patientServiceService.Affiche(this.DAT_RDV).then(response=> {
+    this.dataList = response.data;
+  })
+}}
+ 
 }
+
+

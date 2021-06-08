@@ -9,6 +9,18 @@
             <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
                 Ajouter Rendez-Vous
                 </button>
+            
+                <form #e="ngForm" (ngSubmit)="Affiche(e.value)">
+                  <div class="card-body"> 
+                <input type="date" id="meeting-time"
+                name="meeting-time" ngModel name="DAT_RDV">
+                
+                </div>
+             
+            <button type="submit" class="btn btn-success" (click)="Affiche(RDV['DAT_RDV'])">Affiche</button>
+        
+          </form>
+        
                 <div class="card bg-gradient-default">
                   <div class="card-header border-0">
     

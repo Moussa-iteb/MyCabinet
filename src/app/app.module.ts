@@ -27,6 +27,8 @@ import { ScannerapciComponent } from './scannerapci/scannerapci.component';
 import { ProfilconsComponent } from './profilcons/profilcons.component';
 import { CertificatComponent } from './certificat/certificat.component';
 import { ProfilcertComponent } from './profilcert/profilcert.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+
 
 
 
@@ -38,7 +40,7 @@ const appRoutes: Routes = [
   
   {path:'caisse',component:CaisseComponent},
   
- 
+ {path:'inscription',component:InscriptionComponent},
   {path:'ordonnance',component:OrdonnanceComponent},
   {path:'rendezvous',component:RendezvousComponent},
 
@@ -47,7 +49,7 @@ const appRoutes: Routes = [
   {path:'analyse',component:AnalyseComponent},
  
  {path:'profilcert/:id',component:ProfilcertComponent},
-  
+
  
   {path:'irmapci',component:IrmapciComponent},
   
@@ -97,6 +99,8 @@ const appRoutes: Routes = [
     ProfilpatientComponent,
     CertificatComponent,
     ProfilcertComponent,
+    InscriptionComponent,
+  
     
   
     

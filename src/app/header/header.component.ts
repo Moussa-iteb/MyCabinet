@@ -22,6 +22,6 @@ export class HeaderComponent implements OnInit {
   logMeOut() {
     this.router.navigateByUrl('login');
   }
-
-
+ 
+deconnexion(){}
 }

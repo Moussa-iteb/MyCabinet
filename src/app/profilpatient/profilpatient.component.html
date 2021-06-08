@@ -81,8 +81,8 @@
         <td>{{CNAM['CODE_MED_F']}}</td>
         <td>{{CNAM['CODE_APCI']}}</td>
         
-        <td><button type="button" class="btn btn-danger">Supprimer</button>
-          <button type="button" class="btn btn-success" >Modifier</button>
+        <td><button type="button" class="btn btn-danger"(click)="deletecnam(CNAM['NUM_CNAM_P'])">Supprimer</button>
+          <button type="submit"data-toggle="modal" data-target="#modal-content" (click)="updtecnam(CNAM['NUM_CNAM_P'],CNAM['VAL_CNAM'],CNAM['TYP_CNAM'],CNAM['CODE_APCI'])" class="btn btn-success">Modifier</button>
         </td>
       </tr>
      
@@ -99,18 +99,14 @@
     <thead>
       <tr>
         <th>Nom Maladie</th>
-        <th>Traitement</th>
-        
+      
       </tr>
     </thead>
     <tbody *ngFor="let MALADIE_CHRONIQUE of maladeList">
       <tr data-widget="expandable-table" aria-expanded="false">
         <td>{{ MALADIE_CHRONIQUE['NOM_M']}}</td>
-        <td>{{ MALADIE_CHRONIQUE['TR_M']}}</td>
-        
-      </tr>
-     
-    </tbody>
+        </tr>
+      </tbody>
   </table>
 </div>
 </div>
@@ -221,20 +217,20 @@
             <div class="card-body">
                  <div class="form-group"></div>    
               <label>Régime CNAM</label>
-                  <select class="form-control select2" style="width: 100%;" ngModel name="TYP_CNAM">
+                  <select class="form-control select2" style="width: 100%;" [(ngModel)]="TYP_CNAM" name="TYP_CNAM">
                     <option selected="selected">Régime de la sante public</option>
                     <option>Régime médecin famille</option>
                     <option>Régime de remboursement</option>
                   </select>
                       <label for="Identification">Identification</label>
-          <input type="text" class="form-control" id="NUM_CNAM_P" placeholder="Identification" ngModel name="NUM_CNAM_P">
+          <input type="text" class="form-control" [(ngModel)]="NUM_CNAM_P" id="NUM_CNAM_P" placeholder="Identification"  name="NUM_CNAM_P">
           <label for="meeting-time">Validation</label><br>
-          <input type="datetime-local" id="meeting-time"
-                 name="meeting-time" ngModel name="VAL_CNAM"  ><br>
+          <input type="datetime-local" [(ngModel)]="VAL_CNAM" id="meeting-time"
+                 name="meeting-time"  name="VAL_CNAM"  ><br>
           <label for="Qualification">Qualification</label>
-          <input type="text" class="form-control" id="QUAL" placeholder="Qualification" ngModel name="QUAL">
+          <input type="text" class="form-control" [(ngModel)]="QUAL" id="QUAL" placeholder="Qualification" name="QUAL">
           <label for="code">Code APCI</label>
-          <input type="text" class="form-control" id="CODE_APCI"placeholder="CODE_APCI" ngModel name="CODE_APCI">
+          <input type="text" class="form-control" [(ngModel)]="CODE_APCI" id="CODE_APCI"placeholder="CODE_APCI" name="CODE_APCI">
           <label>Code Médecin.F</label>
           <input type="text" class="form-control" id="CODE_MED_F"placeholder="CODE_MED_F" ngModel name="CODE_MED_F">
         </div>
@@ -265,10 +261,7 @@
                   <select name="id_M" ngModel >
                     <option *ngFor="let malade of Malades" value="{{malade.NUM_M}}">{{malade.NOM_M}}</option>
                   </select><br>
-      <label for="Traitement">Traitement Chronique</label> <br> 
-      <select name="NUM_MED" ngModel >
-        <option *ngFor="let med of Medicaments" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
-      </select><br>
+     
     </div>
     <div class="modal-footer justify-content-between">
       <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -276,10 +269,38 @@
         Ajouter Maladie Chronique
         </button>
       </div>
+        
       </form>
       </div>
       </div>
       </div>
+</div>
+<div class="modal fade" id="modal-tr">
+  <div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Ajouter Traitement </h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <form #t="ngForm" (ngSubmit)="ajoutertr(t.value)">
+        <div class="card-body">
+    <label for="Traitement">Traitement Chronique</label> <br> 
+    <select name="NUM_MED" ngModel >
+      <option *ngFor="let med of Medicaments" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
+    </select><br>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+   
+    </div>
+      
+    </form>
+    </div>
+    </div>
+    </div>
 </div>
 <div class="modal fade" id="modal-m">
   <div class="modal-dialog">
@@ -401,10 +422,11 @@
        
            <div class="form-group"></div>
           
-                <label for="NOM">Nom Acte </label>
-                <select name="id_act" ngModel >
-                  <option *ngFor="let Specialite of Acts" value="{{Specialite.NUM_ACTE}}">{{Specialite.NOM_ACTE}}</option>
+                <label for="NOM">Nom Acte </label><br>
+                <select name="NUM_ACTE" ngModel >
+                  <option *ngFor="let Acte of Acts" value="{{Acte.NUM_ACTE}}">{{Acte.NOM_ACTE}}</option>
                 </select>
+                
                 
   
   </div>
@@ -499,13 +521,150 @@
               name="meeting-time" ngModel name="DAT_CONS"></b><br>
 
             <h3 class="profile-username text-center">Ordonnance Médicale</h3>
-            <b>Code CNAM: <input type="text" class="form-control" id="{{Patient.PREN_P}}" placeholder="{{Patient.PREN_P}}" ngModel name="{{Patient.NOM_P}}"></b><br>
-            <b>Bénéficiaire:<input type="text" class="form-control" id="{{Patient.PREN_P}} {{Patient.NOM_P}}" placeholder="{{Patient.PREN_P}} {{Patient.NOM_P}}" ngModel name="{{Patient.PREN_P}} {{Patient.NOM_P}}"></b> <br>
-            <b>APCI:<input type="text" class="form-control" id="{{Patient.PREN_P}} {{Patient.NOM_P}}" placeholder="{{Patient.PREN_P}} {{Patient.NOM_P}}" ngModel name="{{Patient.PREN_P}} {{Patient.NOM_P}}"></b><br>
-            <b><u>Prescription:</u></b><br>
-Nom Médicament/
-Quantité/
-Durée
+            
+              
+              
+                <thead>
+                  <tr>
+                   
+                    <th>Code CNAM:</th></tr><tr>
+                   
+                </thead>
+                <tbody *ngFor="let CNAM of cnamList">
+                  <tr data-widget="expandable-table" aria-expanded="false">
+                  
+                    <td>{{CNAM['NUM_CNAM_P']}}</td></tr>
+                   
+               
+                 
+                </tbody>
+              
+                <thead>
+                  <tr>
+                   
+                    <th>Patient:</th></tr><tr>
+                   
+                </thead>
+                <tbody *ngFor="let PATIENT of pList">
+                  <tr data-widget="expandable-table" aria-expanded="false">
+                  
+                    <td>{{PATIENT['NOM_P']}} {{PATIENT['PREN_P']}}</td></tr>
+                   
+               
+                 
+                </tbody>
+              
+                <thead>
+                  <tr>
+                   
+                    <th>APCI:</th></tr><tr>
+                   
+                </thead>
+                <tbody *ngFor="let CNAM of cnamList">
+                  <tr data-widget="expandable-table" aria-expanded="false">
+                  
+                    <td>{{CNAM['CODE_APCI']}}</td></tr>
+                   
+               
+                 
+                </tbody>
+             
+           
+            
+            <div class="card-body">
+              <div class="card card-default">
+                <div class="card-header">
+                  <h3  align="center">Prescription</h3>
+                </div>
+                </div>
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Nom Médicament</th>
+                    <th>Quantité</th>
+                    <th>Nombre de fois</th>
+                    <th>Durée</th>
+                    
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr data-widget="expandable-table" aria-expanded="false">
+                    <td> <select name="id_MED" ngModel >
+                      <option *ngFor="let med of Medicament" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
+                    </select></td>
+                    <td><input type="text" class="form-control" id="QTE_MED" placeholder="QTE_MED" ngModel name="QTE_MED"></td>
+                    <td><input type="text" class="form-control" id="	NBRE_FOIS_MED" placeholder="	NBRE_FOIS_MED" ngModel name="	NBRE_FOIS_MED"></td>
+                    <td><input type="text" class="form-control" id="DUR_MED" placeholder="DUR_MED" ngModel name="DUR_MED"></td>
+
+                    
+                   
+                  </tr>
+                 <tr>
+                  <td> <select name="id_MED" ngModel >
+                    <option *ngFor="let med of Medicament" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
+                  </select></td>
+                  <td><input type="text" class="form-control" id="QTE_MED" placeholder="QTE_MED" ngModel name="QTE_MED"></td>
+                  <td><input type="text" class="form-control" id="	NBRE_FOIS_MED" placeholder="	NBRE_FOIS_MED" ngModel name="	NBRE_FOIS_MED"></td>
+                  <td><input type="text" class="form-control" id="DUR_MED" placeholder="DUR_MED" ngModel name="DUR_MED"></td>
+
+                 </tr>
+                 <tr>
+                  <td> <select name="id_MED" ngModel >
+                    <option *ngFor="let med of Medicament" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
+                  </select></td>
+                  <td><input type="text" class="form-control" id="QTE_MED" placeholder="QTE_MED" ngModel name="QTE_MED"></td>
+                  <td><input type="text" class="form-control" id="	NBRE_FOIS_MED" placeholder="	NBRE_FOIS_MED" ngModel name="	NBRE_FOIS_MED"></td>
+                  <td><input type="text" class="form-control" id="DUR_MED" placeholder="DUR_MED" ngModel name="DUR_MED"></td>
+
+                 </tr>
+                 <tr>
+                  <td> <select name="id_MED" ngModel >
+                    <option *ngFor="let med of Medicament" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
+                  </select></td>
+                  <td><input type="text" class="form-control" id="QTE_MED" placeholder="QTE_MED" ngModel name="QTE_MED"></td>
+                  <td><input type="text" class="form-control" id="	NBRE_FOIS_MED" placeholder="	NBRE_FOIS_MED" ngModel name="	NBRE_FOIS_MED"></td>
+                  <td><input type="text" class="form-control" id="DUR_MED" placeholder="DUR_MED" ngModel name="DUR_MED"></td>
+
+                 </tr>
+                 <tr>
+                  <td> <select name="id_MED" ngModel >
+                    <option *ngFor="let med of Medicament" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
+                  </select></td>
+                  <td><input type="text" class="form-control" id="QTE_MED" placeholder="QTE_MED" ngModel name="QTE_MED"></td>
+                  <td><input type="text" class="form-control" id="	NBRE_FOIS_MED" placeholder="	NBRE_FOIS_MED" ngModel name="	NBRE_FOIS_MED"></td>
+                  <td><input type="text" class="form-control" id="DUR_MED" placeholder="DUR_MED" ngModel name="DUR_MED"></td>
+
+                 </tr>
+                 <tr>
+                  <td> <select name="id_MED" ngModel >
+                    <option *ngFor="let med of Medicament" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
+                  </select></td>
+                  <td><input type="text" class="form-control" id="QTE_MED" placeholder="QTE_MED" ngModel name="QTE_MED"></td>
+                  <td><input type="text" class="form-control" id="	NBRE_FOIS_MED" placeholder="	NBRE_FOIS_MED" ngModel name="	NBRE_FOIS_MED"></td>
+                  <td><input type="text" class="form-control" id="DUR_MED" placeholder="DUR_MED" ngModel name="DUR_MED"></td>
+
+                 </tr>
+                 <tr>
+                  <td> <select name="id_MED" ngModel >
+                    <option *ngFor="let med of Medicament" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
+                  </select></td>
+                  <td><input type="text" class="form-control" id="QTE_MED" placeholder="QTE_MED" ngModel name="QTE_MED"></td>
+                  <td><input type="text" class="form-control" id="	NBRE_FOIS_MED" placeholder="	NBRE_FOIS_MED" ngModel name="	NBRE_FOIS_MED"></td>
+                  <td><input type="text" class="form-control" id="DUR_MED" placeholder="DUR_MED" ngModel name="DUR_MED"></td>
+
+                 </tr>
+                 <tr>
+                    <td> <select name="id_MED" ngModel >
+                      <option *ngFor="let med of Medicament" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
+                    </select></td>
+                    <td><input type="text" class="form-control" id="QTE_MED" placeholder="QTE_MED" ngModel name="QTE_MED"></td>
+                    <td><input type="text" class="form-control" id="	NBRE_FOIS_MED" placeholder="	NBRE_FOIS_MED" ngModel name="	NBRE_FOIS_MED"></td>
+                    <td><input type="text" class="form-control" id="DUR_MED" placeholder="DUR_MED" ngModel name="DUR_MED"></td>
+
+                 </tr>
+                </tbody>
+              </table>
+            </div>
             
     </ul>
   
@@ -586,24 +745,62 @@ Durée
       <div class="card-body">
       
             
-        <ul class="list-group list-group-unbordered mb-3">
+       
          
      
             <b class="float">Date de Consultation:<input type="datetime-local" id="meeting-time"
               name="meeting-time" ngModel name="DAT_CONS"></b><br>
-            <h3 class="profile-username text-center">Ordonnance Médicale Pour examens  <select class="form-control select2 tex text-center" style="width: 100%;" ngModel name="TYPE_EX">
-              <option selected="selected text-center">SCANNER</option>
-              <option>IRM</option>
-              <option>Imagerie</option>
-              <option>RADIO</option>
-              <option>Analyse Biologique</option>
-            </select> </h3>
-            <label for="NOM">Code CNAM: </label><input type="text" class="form-control" id="{{Patient.PREN_P}}" placeholder="{{Patient.PREN_P}}" ngModel name="{{Patient.NOM_P}}">
-            <label for="NOM">Patient:</label><input type="text" class="form-control" id="{{Patient.PREN_P}}" placeholder="{{Patient.PREN_P}}" ngModel name="{{Patient.NOM_P}}">
-            <label for="NOM">APCI: </label><input type="text" class="form-control" id="{{Patient.PREN_P}}" placeholder="{{Patient.PREN_P}}" ngModel name="{{Patient.NOM_P}}">
+            <h3 class="profile-username text-center">Ordonnance Médicale Pour examens 
+              <select name="NUM_EX" ngModel >
+                <option *ngFor="let examen of Examens" value="{{examen.NUM_EX}}">{{examen.TYPE_EX}}</option>
+              </select> </h3>
+            <thead>
+              <tr>
+               
+                <th>Code CNAM:</th></tr><tr>
+               
+            </thead>
+            <tbody *ngFor="let CNAM of cnamList">
+              <tr data-widget="expandable-table" aria-expanded="false">
+              
+                <td>{{CNAM['NUM_CNAM_P']}}</td></tr>
+               
+           
+             
+            </tbody>
+            <thead>
+              <tr>
+               
+                <th>Patient:</th></tr><tr>
+               
+            </thead>
+            <tbody *ngFor="let PATIENT of pList">
+              <tr data-widget="expandable-table" aria-expanded="false">
+              
+                <td>{{PATIENT['NOM_P']}} {{PATIENT['PREN_P']}}</td></tr>
+               
+           
+             
+            </tbody>
+          
+            <thead>
+              <tr>
+               
+                <th>APCI:</th></tr><tr>
+               
+            </thead>
+            <tbody *ngFor="let CNAM of cnamList">
+              <tr data-widget="expandable-table" aria-expanded="false">
+              
+                <td>{{CNAM['CODE_APCI']}}</td></tr>
+               
+           
+             
+            </tbody>
+          
             <label for="NOM"><u>Examens demandées:</u></label><br>
             <textarea class="form-control" rows="3" placeholder="1/ Examen demandées..." ngModel name="PRESCRIPTION_EX"></textarea>
-        </ul>
+      
   </div>
   <div class="modal-footer justify-content-between">
    

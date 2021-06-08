@@ -9,7 +9,7 @@ export class PatientServiceService {
   constructor() { }
 
   async getActs(){
-    return await axios.get('http://localhost:5000/ACTE',{});
+    return await axios.get('http://localhost:5000/Acte',{});
   }
 
   async  getPatient(){
@@ -22,8 +22,8 @@ export class PatientServiceService {
     return await  axios.get('http://localhost:5000/MOUVEMENT_CAISSE',{});
   }
  
-  async  getConsultationt(){
-    return await  axios.get('http://localhost:5000/Consultationt',{});
+  async  getConsultationt(id:any){
+    return await  axios.get('http://localhost:5000/Consultationt/'+id,{});
   }
   async  getLettre(){
     return await  axios.get('http://localhost:5000/LETTRE',{});
@@ -31,11 +31,9 @@ export class PatientServiceService {
   async  getExamen(){
     return await  axios.get('http://localhost:5000/Examen',{});
   }
-  async  getEnregistre(){
-    return await  axios.get('http://localhost:5000/Enregistre',{});
-  }
-  async  getacte(){
-    return await  axios.get('http://localhost:5000/ACTE',{});
+ 
+  async  getacte(id:any){
+    return await  axios.get('http://localhost:5000/ENREGISTRE_ACTE/'+id,{});
   }
   async  getmalade(){
     return await  axios.get('http://localhost:5000/MALADIE_CHRONIQUE',{});
@@ -49,28 +47,52 @@ export class PatientServiceService {
   async AddActeEnre(data:any){
     return await axios.post('http://localhost:5000/enregistre_Acte',data);
   }
+  async AddPrescription(data:any){
+    return await axios.post('http://localhost:5000/Prescription',data);
+  }
+  async ajouterenregistre(data:any){
+    return await axios.post('http://localhost:5000/Enregistre',data);
+  }
+  async Inscription(data:any){
+    return await axios.post('http://localhost:5000/Utilisateur',data);
+  }
   async Ajouteravoir(data:any){
     return await axios.post('http://localhost:5000/AVOIR_MALADIE',data);
+  }
+  async Ajouteravoirtr(data:any){
+    return await axios.post('http://localhost:5000/AVOIR_TRAITEMENT',data);
   }
 
   async  getonePatient(id: any){
     return await  axios.get('http://localhost:5000/PATIENT/'+id,{});
   }
-  async  afficher(id: any){
-    return await  axios.get('http://localhost:5000/MOUVEMENT_CAISSE/'+id,{});
+  async Affiche(id: any){
+    return await  axios.get('http://localhost:5000/RDV/'+id,{});
   }
   
   async  getoneCnam(id: any){
     return await  axios.get('http://localhost:5000/CNAM/'+id,{});
   }
+  async  modifierCnam(id: any){
+    return await  axios.put('http://localhost:5000/CNAM/'+id,{});
+  }
   async  getonemalade(id: any){
-    return await  axios.get('http://localhost:5000/MALADIE_CHRONIQUE/'+id,{});
+    return await  axios.get('http://localhost:5000/AVOIR_MALADIE/'+id,{});
+  }
+  async  getonetraitement(id: any){
+    return await  axios.get('http://localhost:5000/Avoir_traitement/'+id,{});
+  }
+  async  getoneutilisateur(id: any){
+    return await  axios.get('http://localhost:5000/UTILISATEUR/'+id,{});
   }
   async  getoneCertificat(id: any){
     return await  axios.get('http://localhost:5000/CERTIFICAT/'+id,{});
   }
   async  getcertificat(){
     return await  axios.get('http://localhost:5000/CERTIFICAT',{});
+  }
+  async  getutilisateur(){
+    return await  axios.get('http://localhost:5000/UTILISATEUR',{});
   }
   async  getmedicament(){
     return await  axios.get('http://localhost:5000/MEDICAMENT',{});
@@ -91,6 +113,7 @@ export class PatientServiceService {
   async ajouteracteconsult(data: any){
     return await axios.post('http://localhost:5000/ENREGISTRE_ACTE',data)
   }
+  
   async ajoutermalade(data: any){
     return await axios.post('http://localhost:5000/MALADIE_CHRONIQUE',data)
   }
@@ -108,13 +131,18 @@ export class PatientServiceService {
     return await axios.post('http://localhost:5000/CERTIFICAT',data)
   }
   async  getoneConsultationt(id: any){
-    return await  axios.get('http://localhost:5000/CONSULTATIONT/'+id,{});
+    return await  axios.get('http://localhost:5000/CONSULTATIONTT/'+id,{});
   }
   async  getoneprescription(id: any){
     return await  axios.get('http://localhost:5000/PRESCRIPTION/'+id,{});
   }
   async  deletepatient(id: any){
+    
     return await  axios.delete('http://localhost:5000/PATIENT/'+id,{});
+  }
+  async  deletecnam(id: any){
+    
+    return await  axios.delete('http://localhost:5000/CNAM/'+id,{});
   }
   async ajouterrendezvous(data: any){
     return await axios.post('http://localhost:5000/RDV',data)
@@ -128,9 +156,7 @@ export class PatientServiceService {
   async ajouterordonnance(data: any){
     return await axios.post('http://localhost:5000/ORDONNANCE',data)
   }
-  async ajouterprescription(data: any){
-    return await axios.post('http://localhost:5000/PRESCRIPTION',data)
-  }
+  
   async ajoutermed(data: any){
     return await axios.post('http://localhost:5000/MEDICAMENT',data)
   }
@@ -144,5 +170,10 @@ export class PatientServiceService {
   async  getonecnam(id: any){
     return await  axios.get('http://localhost:5000/CNAM/'+id,{});
   }
-
+  async  afficher(id: any){
+    return await  axios.get('http://localhost:5000/MOUVEMENT_CAISSE/'+id,{});
+  }
+  async  modifierp(id: any,data: any){
+    return await  axios.put('http://localhost:5000/PATIENT/'+id,data);
+  }
 }

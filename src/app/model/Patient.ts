@@ -6,4 +6,5 @@ export class Patient {
    
 NUM_ORD:any
   }
+ 
   

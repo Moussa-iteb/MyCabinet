@@ -6,10 +6,14 @@
       </div>
       <div class="card-body">         
 <div class="input-group input-group-sm">
+ 
+  
   <input type="text" class="form-control" ngModel name="text">
-  <span class="input-group-append">
- <button type="submit" class="btn btn-success">Rechercher</button>
- </span>
+
+ 
+  <button type="submit" class="btn btn-success">Rechercher</button>
+
+
   <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
    Ajouter Patient
     </button>
@@ -25,15 +29,15 @@
               <th>Numéro Téléphone</th>
               <th>Action</th>
             </tr>
-          </thead>
+          </thead>	
           <tbody *ngFor="let Patient  of dataList">
             <tr data-widget="expandable-table" aria-expanded="false">
               <td>{{Patient['NOM_P']}}</td>
               <td>{{Patient['PREN_P']}}</td>
               <td>{{Patient['DAT_NAI_P']}}</td>
               <td>{{Patient['NUM_TEL_P']}}</td>
-              <td><button type="submit" class="btn btn-danger deletepatient(this.id)" >Supprimer</button>
-                <button type="submit" class="btn btn-success">Modifier</button>
+              <td><button type="submit" class="btn btn-danger" (click)="deletepatient(Patient['NUM_FICH_P'])" >Supprimer</button>
+                <button type="submit"   data-toggle="modal" data-target="#modal-default" (click)="updteptient(Patient['NUM_FICH_P'],Patient['CIN_P'],Patient['NOM_P'],Patient['NOM_P'],Patient['PREN_P'],Patient['DAT_NAI_P'],Patient['PROF_P'],Patient['ADR_P'],Patient['SEXE_P'],Patient['CIVILITE_P'],Patient['EMAIL_P'])" class="btn btn-success">Modifier</button>
                 <button type="submit" class="btn btn-success" [routerLink]="['/profilpatient/'+Patient['NUM_FICH_P']]">Afficher</button>
                 
               </td>
@@ -54,15 +58,15 @@
       <div class="modal-body">
           <form #f="ngForm" (ngSubmit)="addPatient(f.value)">
           <div class="card-body">
-               <div class="form-group"></div>
+              
         <label for="C.I.N">C.I.N</label>
-        <input type="text" class="form-control" id="CIN_P" placeholder="cin" ngModel name="CIN_P">
+        <input type="text" class="form-control"  [(ngModel)]="CIN_P"  id="CIN_P" placeholder="cin"  name="CIN_P">
         <label for="prenom">Prénom</label>
-        <input type="text" class="form-control" id="NOM_P" placeholder="Nom" ngModel name="NOM_P">
+        <input type="text" class="form-control" [(ngModel)]="NOM_P" id="NOM_P" placeholder="Nom"  name="NOM_P">
         <label for="Nom">Nom</label>
-        <input type="text" class="form-control" id="PREN_P" placeholder="Prénom" ngModel name="PREN_P">              
+        <input type="text" class="form-control" [(ngModel)]="PREN_P" id="PREN_P" placeholder="Prénom"  name="PREN_P">              
             <label>Sexe</label>
-                <select class="form-control select2" style="width: 100%;" ngModel name="SEXE_P">
+                <select class="form-control select2" style="width: 100%;"  name="SEXE_P">
                   <option selected="selected">Femme</option>
                   <option>Homme</option>
                 </select>
@@ -70,23 +74,23 @@
                   
                 <label for="start">Date de Naissance:</label><br>
 
-                <input type="date" id="start" name="trip-start" ngModel name="DAT_NAI_P"><br>
+                <input type="date" id="start" name="trip-start"  name="DAT_NAI_P"><br>
                        
                 
         <label>Civilité</label>
-                <select class="form-control select2" style="width: 100%;" ngModel name="CIVILITE_P">
+                <select class="form-control select2" style="width: 100%;"  name="CIVILITE_P">
                   <option selected="selected">Célibataire</option>
                   <option>Marié(e)</option>
                   <option>Divorcé(e)</option>
                 </select>
                     <label for="Email">Email</label>    
-        <input type="text" class="form-control" id="EMAIL_P" placeholder="Email" ngModel name="EMAIL_P">
+        <input type="text" class="form-control" [(ngModel)]="EMAIL_P" id="EMAIL_P" placeholder="Email"  name="EMAIL_P">
           <label for="Adresse">Adresse</label>
-        <input type="text" class="form-control" id="ADR_P" placeholder="Adresse" ngModel name="ADR_P">
+        <input type="text" class="form-control" [(ngModel)]="ADR_P" id="ADR_P" placeholder="Adresse"  name="ADR_P">
         <label for="tel">Téléphone</label>
-        <input type="text" class="form-control" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="" inputmode="text" ngModel name="NUM_TEL_P">
+        <input type="text" class="form-control" [(ngModel)]="NUM_TEL_P" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="" inputmode="text" ngModel name="NUM_TEL_P">
         <label for="Profession">Profession</label>
-        <input type="text" class="form-control" id="PROF_P" placeholder="Profession" ngModel name="PROF_P">
+        <input type="text" class="form-control" [(ngModel)]="PROF_P" id="PROF_P" placeholder="Profession"  name="PROF_P">
       </div>
       <div class="modal-footer justify-content-between">
             <button type="submit" class="btn btn-primary">Enregistrer</button>
