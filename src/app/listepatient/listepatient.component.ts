@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild, Input } from '@angular/core';
 import { Data } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-
 import { PatientServiceService } from '../patient-service.service';
+import { SearchFilterPipe} from '../search-filter.pipe';
+import { CurrencyPipe } from '@angular/common';
+
 class Patient {
   
 }
@@ -17,21 +19,21 @@ export class ListepatientComponent implements OnInit {
   
   dataList = [];
   id:any;
- 
+  queryString:any;
   patient:any;
   NOM_P_RDV:any;
   NUM_TEL_P_RDV:any;
   NUM_FICH_P:any;
-  	CIN_P:any;
-    	NOM_P:any;
-      		PREN_P:any;
-          	DAT_NAI_P:any;
-            	PROF_P:any;
-              		ADR_P:any;
-                  		NUM_TEL_P:any;
-                      		SEXE_P:any;
-                          		CIVILITE_P:any;
-                              	EMAIL_P:any;
+	CIN_P:any;
+	NOM_P:any;
+	PREN_P:any;
+  DAT_NAI_P:any;
+	PROF_P:any;
+  ADR_P:any;
+  NUM_TEL_P:any;
+  SEXE_P:any;
+	CIVILITE_P:any;
+	EMAIL_P:any;
   modifier=false;
 
 
@@ -57,9 +59,14 @@ this.patientServiceService.modifierp(this.NUM_FICH_P,liste).then(response=> {
 console.log(response)
 })
     }else{
+      if (liste==""){
+        alert("les champs est vide") ;
+      }else {
       this.patientServiceService.addPatient(liste).then(response=> {
         console.log(response)
+       
       })
+    }
     }
     
     console.log(liste);
@@ -80,5 +87,13 @@ deletepatient(id:any){
   })
   
 }
-Rechercher(){}
+
+Rechercher(data:any){
+ 
+  this.patientServiceService.recherche(data.NumTel).then(response=>{
+      console.log(response)
+      this.dataList = response.data;  
+  })
+ 
+}
 }

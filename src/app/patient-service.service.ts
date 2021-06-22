@@ -66,6 +66,10 @@ export class PatientServiceService {
   async  getonePatient(id: any){
     return await  axios.get('http://localhost:5000/PATIENT/'+id,{});
   }
+  async  getUtilisateur(data:any){
+    return await  axios.post('http://localhost:5000/login',data);
+  }
+
   async Affiche(id: any){
     return await  axios.get('http://localhost:5000/RDV/'+id,{});
   }
@@ -82,9 +86,7 @@ export class PatientServiceService {
   async  getonetraitement(id: any){
     return await  axios.get('http://localhost:5000/Avoir_traitement/'+id,{});
   }
-  async  getoneutilisateur(id: any){
-    return await  axios.get('http://localhost:5000/UTILISATEUR/'+id,{});
-  }
+  
   async  getoneCertificat(id: any){
     return await  axios.get('http://localhost:5000/CERTIFICAT/'+id,{});
   }
@@ -136,6 +138,9 @@ export class PatientServiceService {
   async  getoneprescription(id: any){
     return await  axios.get('http://localhost:5000/PRESCRIPTION/'+id,{});
   }
+  async  recherche(id: any){
+    return await  axios.get('http://localhost:5000/recherche/'+id,{});
+  }
   async  deletepatient(id: any){
     
     return await  axios.delete('http://localhost:5000/PATIENT/'+id,{});
@@ -175,5 +180,8 @@ export class PatientServiceService {
   }
   async  modifierp(id: any,data: any){
     return await  axios.put('http://localhost:5000/PATIENT/'+id,data);
+  }
+  async  modifiercnam(id: any,data: any){
+    return await  axios.put('http://localhost:5000/CNAM/'+id,data);
   }
 }

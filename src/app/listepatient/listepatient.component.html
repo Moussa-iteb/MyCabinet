@@ -4,22 +4,19 @@
       <div class="card-header">
         <h3  align="center">Liste Patient</h3>
       </div>
-      <div class="card-body">         
-<div class="input-group input-group-sm">
+      <div class="card-body">     
+       
+           
+        <form #k="ngForm" (ngSubmit)="Rechercher(k.value)">
  
-  
-  <input type="text" class="form-control" ngModel name="text">
-
- 
-  <button type="submit" class="btn btn-success">Rechercher</button>
-
-
-  <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
-   Ajouter Patient
-    </button>
+  <input type="text" class="form-control" ngModel  placeholder="Saisir Numéro de téléphone"  name="NumTel" ><button type="submit" class="btn btn-success float-right">Rechercher</button>
+    </form>
+    <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modal-default">
+      Ajouter Patient
+       </button>
 </div>
-</div>
-<div class="card-body">
+
+
   <table class="table table-bordered table-hover">
           <thead>
             <tr>
@@ -30,11 +27,11 @@
               <th>Action</th>
             </tr>
           </thead>	
-          <tbody *ngFor="let Patient  of dataList">
+          <tbody *ngFor="let Patient  of dataList  ">
             <tr data-widget="expandable-table" aria-expanded="false">
-              <td>{{Patient['NOM_P']}}</td>
-              <td>{{Patient['PREN_P']}}</td>
-              <td>{{Patient['DAT_NAI_P']}}</td>
+              <td>{{Patient['NOM_P']  }}</td>
+              <td>{{Patient['PREN_P'] }}</td>
+              <td>{{Patient['DAT_NAI_P'] }}</td>
               <td>{{Patient['NUM_TEL_P']}}</td>
               <td><button type="submit" class="btn btn-danger" (click)="deletepatient(Patient['NUM_FICH_P'])" >Supprimer</button>
                 <button type="submit"   data-toggle="modal" data-target="#modal-default" (click)="updteptient(Patient['NUM_FICH_P'],Patient['CIN_P'],Patient['NOM_P'],Patient['NOM_P'],Patient['PREN_P'],Patient['DAT_NAI_P'],Patient['PROF_P'],Patient['ADR_P'],Patient['SEXE_P'],Patient['CIVILITE_P'],Patient['EMAIL_P'])" class="btn btn-success">Modifier</button>
@@ -100,4 +97,4 @@
       </div>
       </div>
 </div>
-</div></div> 
+</div>

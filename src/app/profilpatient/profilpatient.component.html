@@ -82,7 +82,8 @@
         <td>{{CNAM['CODE_APCI']}}</td>
         
         <td><button type="button" class="btn btn-danger"(click)="deletecnam(CNAM['NUM_CNAM_P'])">Supprimer</button>
-          <button type="submit"data-toggle="modal" data-target="#modal-content" (click)="updtecnam(CNAM['NUM_CNAM_P'],CNAM['VAL_CNAM'],CNAM['TYP_CNAM'],CNAM['CODE_APCI'])" class="btn btn-success">Modifier</button>
+          <button type="submit"   data-toggle="modal" data-target="#modal-content" (click)="updtecnam(CNAM['NUM_CNAM_P'],CNAM['VAL_CNAM'],CNAM['TYP_CNAM'],CNAM['QUAL'],CNAM['CODE_APCI'])" class="btn btn-success">Modifier</button>
+
         </td>
       </tr>
      
@@ -99,12 +100,15 @@
     <thead>
       <tr>
         <th>Nom Maladie</th>
-      
+        <th>Traitement Chronique</th>
       </tr>
     </thead>
     <tbody *ngFor="let MALADIE_CHRONIQUE of maladeList">
       <tr data-widget="expandable-table" aria-expanded="false">
         <td>{{ MALADIE_CHRONIQUE['NOM_M']}}</td>
+        <td> <button  type="button" class="btn btn-default " data-toggle="modal" data-target="#modal-tr">
+          Ajouter traitement Chronique
+           </button></td>
         </tr>
       </tbody>
   </table>
@@ -217,20 +221,19 @@
             <div class="card-body">
                  <div class="form-group"></div>    
               <label>Régime CNAM</label>
-                  <select class="form-control select2" style="width: 100%;" [(ngModel)]="TYP_CNAM" name="TYP_CNAM">
+                  <select class="form-control select2" style="width: 100%;"   [(ngModel)]="TYP_CNAM"  id="TYP_CNAM" name="TYP_CNAM">
                     <option selected="selected">Régime de la sante public</option>
                     <option>Régime médecin famille</option>
                     <option>Régime de remboursement</option>
                   </select>
                       <label for="Identification">Identification</label>
-          <input type="text" class="form-control" [(ngModel)]="NUM_CNAM_P" id="NUM_CNAM_P" placeholder="Identification"  name="NUM_CNAM_P">
+          <input type="text" class="form-control"   [(ngModel)]="NUM_CNAM_P"  id="NUM_CNAM_P" placeholder="NUM_CNAM_P"  name="NUM_CNAM_P">
           <label for="meeting-time">Validation</label><br>
-          <input type="datetime-local" [(ngModel)]="VAL_CNAM" id="meeting-time"
-                 name="meeting-time"  name="VAL_CNAM"  ><br>
+          <input type="datetime-local"  [(ngModel)]="VAL_CNAM"  id="VAL_CNAM" placeholder="VAL_CNAM"  name="VAL_CNAM"><br>
           <label for="Qualification">Qualification</label>
-          <input type="text" class="form-control" [(ngModel)]="QUAL" id="QUAL" placeholder="Qualification" name="QUAL">
+          <input type="text" class="form-control" [(ngModel)]="QUAL"  id="QUAL" placeholder="QUAL"  name="QUAL">
           <label for="code">Code APCI</label>
-          <input type="text" class="form-control" [(ngModel)]="CODE_APCI" id="CODE_APCI"placeholder="CODE_APCI" name="CODE_APCI">
+          <input type="text" class="form-control" [(ngModel)]="CODE_APCI"  id="CODE_APCI" placeholder="CODE_APCI"  name="CODE_APCI">
           <label>Code Médecin.F</label>
           <input type="text" class="form-control" id="CODE_MED_F"placeholder="CODE_MED_F" ngModel name="CODE_MED_F">
         </div>
@@ -593,7 +596,7 @@
                       <option *ngFor="let med of Medicament" value="{{med.NUM_MED}}">{{med.NOM_MED}}</option>
                     </select></td>
                     <td><input type="text" class="form-control" id="QTE_MED" placeholder="QTE_MED" ngModel name="QTE_MED"></td>
-                    <td><input type="text" class="form-control" id="	NBRE_FOIS_MED" placeholder="	NBRE_FOIS_MED" ngModel name="	NBRE_FOIS_MED"></td>
+                    <td><input type="text" class="form-control" id="	NBRE_FOIS_MED	" placeholder="	NBRE_FOIS_MED" ngModel name="	NBRE_FOIS_MED"></td>
                     <td><input type="text" class="form-control" id="DUR_MED" placeholder="DUR_MED" ngModel name="DUR_MED"></td>
 
                     

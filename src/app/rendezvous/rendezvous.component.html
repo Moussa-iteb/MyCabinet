@@ -12,6 +12,10 @@
             
                 <form #e="ngForm" (ngSubmit)="Affiche(e.value)">
                   <div class="card-body"> 
+                    <label for="date debut">Date début :</label>
+                <input type="date" id="meeting-time"
+                name="meeting-time" ngModel name="DAT_RDV"><br>
+                <label for="date fin">Date fin :</label>
                 <input type="date" id="meeting-time"
                 name="meeting-time" ngModel name="DAT_RDV">
                 

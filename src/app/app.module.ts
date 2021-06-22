@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +29,7 @@ import { ProfilconsComponent } from './profilcons/profilcons.component';
 import { CertificatComponent } from './certificat/certificat.component';
 import { ProfilcertComponent } from './profilcert/profilcert.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 
 
@@ -36,13 +38,12 @@ import { InscriptionComponent } from './inscription/inscription.component';
 
 
 const appRoutes: Routes = [
-  {path:'listepatient',component:ListepatientComponent},
   
-  {path:'caisse',component:CaisseComponent},
+  
+  
   
  {path:'inscription',component:InscriptionComponent},
   {path:'ordonnance',component:OrdonnanceComponent},
-  {path:'rendezvous',component:RendezvousComponent},
 
   {path:'profilpatient/:id',component:ProfilpatientComponent},
   
@@ -53,7 +54,6 @@ const appRoutes: Routes = [
  
   {path:'irmapci',component:IrmapciComponent},
   
-  {path:'certificat',component:CertificatComponent},
   {path:'scannerapci',component:ScannerapciComponent},
   
  {path:'profilcons/:id',component:ProfilconsComponent},
@@ -64,6 +64,13 @@ const appRoutes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       { path: 'about', component: AboutComponent },
+      {path:'listepatient',component:ListepatientComponent},
+      {path:'caisse',component:CaisseComponent},
+      {path:'rendezvous',component:RendezvousComponent},
+        {path:'certificat',component:CertificatComponent},
+        
+
+
     ]
   },
   { path: 'login', component: LoginComponent },
@@ -100,6 +107,7 @@ const appRoutes: Routes = [
     CertificatComponent,
     ProfilcertComponent,
     InscriptionComponent,
+    SearchFilterPipe,
   
     
   
@@ -112,6 +120,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule, RouterModule.forRoot(appRoutes),
     FormsModule
   ],

@@ -25,9 +25,14 @@ export class CertificatComponent implements OnInit {
   ngOnInit(): void {
   }
   ajouterCertificatt(liste:any) {
+    if (liste=="" ){
+      alert("erreur") ;
+    }else {
     this.patientServiceService.ajouterCertificatt(liste).then(response=> {
       console.log(response)
+      alert("success") ;
     })
+  }
     console.log(liste);
 }
  

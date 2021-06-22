@@ -101,10 +101,17 @@ export class ProfilpatientComponent implements OnInit {
   }
   ajouterconsultationt(consu:any) {
   let CONSULTATION = {NUM_FICH_P:this.id,DAT_CONS:consu.DAT_CONS,TYPE_CONS:consu.TYPE_CONS,OBS_CONS:consu.OBS_CONS,TEN_P_CONS:consu.TEN_P_CONS,TEMP_P_CONS:consu.TEMP_P_CONS,POID_P_CONS:consu.POID_P_CONS,TAIL_P_CONS:consu.TAIL_P_CONS,F_C_P_CONS:consu.F_C_P_CONS}
+  if (consu.DAT_CONS=="" && consu.OBS_CONS=="" && consu.TYPE_CONS==""  ){
+    alert("erreur") ;
+  }else {
+
   this.patientServiceService.ajouterconsultation(CONSULTATION).then(response=> {
   console.log(response)
+
     })
-  console.log(CONSULTATION);   
+  }
+  console.log(CONSULTATION);  
+  alert("success") ;
 }
 ajouterCertificat(cert:any) {
   let CERTIFICAT = {NUM_FICH_P: this.id,DAT_REPOS:cert.DAT_REPOS,NBRE_JOURS_REPOS:cert.NBRE_JOURS_REPOS,NOM_P_C:this.Patient.NOM_P}
@@ -115,11 +122,19 @@ ajouterCertificat(cert:any) {
 }
 ajouterrendezvous(rendez:any) {
   let rendezvous = {NUM_FICH_P:this.id,DAT_RDV:rendez.DAT_RDV,NOM_P_RDV:this.Patient.NOM_P,NUM_TEL_P_RDV:this.Patient.NUM_TEL_P}
+  if (rendez.DAT_RDV==""  ){
+    alert("choisir date rendez-vous") ;
+  }else {
   this.patientServiceService.ajouterrendezvous(rendezvous).then(response=> {
   console.log(response)
+  alert("success") ;  
     })
-  console.log(rendezvous);   
   }
+  
+  console.log(rendezvous);
+  
+  }
+  
   ajouteracteconsult(act:any) {
     console.log(act)
     let acte = {NUM_CONS:this.idconsjncdj,NUM_ACTE:act.NUM_ACTE}
@@ -131,43 +146,43 @@ ajouterrendezvous(rendez:any) {
     }
    
     deletecnam(id:any){
+      
       this.patientServiceService.deletecnam(id).then(response=> {
         console.log(response);
       })
       
     }
     
-    updtecnam(NUM_CNAM_P:any, TYP_CNAM:any, VAL_CNAM:any, CODE_APCI:any){
     
-    this.NUM_CNAM_P = NUM_CNAM_P;
-    this.TYP_CNAM = TYP_CNAM;
-    this.VAL_CNAM = VAL_CNAM;
-    this.CODE_APCI = CODE_APCI;
-      
-      
-    }
     ajouteracte(liste:any) {
     
       this.patientServiceService.ajouteracte(liste).then(response=> {
         console.log(response)
       })
       console.log(liste);
+      alert("success") ;
     }
-ajoutercnam(consu:any, liste:any) {
+ajoutercnam(consu:any) {
   if(this.modifier==true){
    
-    this.patientServiceService.modifierCnam(this.NUM_CNAM_P).then(response=> {
+    this.patientServiceService.modifiercnam(this.NUM_CNAM_P,consu).then(response=> {
     console.log(response)
     })
-  }else{
-let CNAM = {NUM_FICH_P:this.id,NUM_CNAM_P:consu.NUM_CNAM_P,TYP_CNAM:consu.TYP_CNAM,VAL_CNAM:consu.VAL_CNAM,CODE_MED_F:consu.CODE_MED_F,QUAL:consu.QUAL,CODE_APCI:consu.CODE_APCI}
-this.patientServiceService.ajoutercnam(CNAM).then(response=> {
+        }else{
+  let CNAM = {NUM_FICH_P:this.id,NUM_CNAM_P:consu.NUM_CNAM_P,TYP_CNAM:consu.TYP_CNAM,VAL_CNAM:consu.VAL_CNAM,CODE_MED_F:consu.CODE_MED_F,QUAL:consu.QUAL,CODE_APCI:consu.CODE_APCI}
+  if (consu.NUM_CNAM_P==""&& consu.TYP_CNAM==""&& consu.VAL_CNAM=="" ){
+    alert("erreur") ;
+  }else {
+  this.patientServiceService.ajoutercnam(CNAM).then(response=> {
 console.log(response)
-  })
+})
+  }
+  alert("success") ;
 }
-console.log(this.CNAM);
 
+console.log(consu);
 }
+
 ajouterEnc(ENCE:any) {
 let ENC = {NUM_CONS:this.idconsjncdj,DAT_M_C:ENCE.DAT_M_C,MONT_M_C:ENCE.MONT_M_C,SUBV_CNAM:ENCE.SUBV_CNAM,TYPE_M_C:ENCE.TYPE_M_C}
 this.patientServiceService.ajouterEnc(ENC ).then(response=> { 
@@ -227,7 +242,15 @@ ajouterlettre(Lett:any) {
           console.log(response)
         })
       }
-    
+      updtecnam(NUM_CNAM_P:any,	VAL_CNAM:any,	TYP_CNAM:any, CODE_APCI:any, QUAL:any){
+        this.NUM_CNAM_P = NUM_CNAM_P;
+         this.modifier=true
+         this.VAL_CNAM = VAL_CNAM;
+        this.TYP_CNAM = TYP_CNAM;
+        this.CODE_APCI = CODE_APCI;
+        this.QUAL = QUAL;
+        
+       }
      
     ajouterprescription(ord:any) {
       console.log(ord)

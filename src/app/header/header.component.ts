@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   redirectToHome() {
     this.router.navigateByUrl('dashboard/home');
+    
   }
   redirectToAbout() {
     this.router.navigateByUrl('dashboard/about');
